@@ -2,9 +2,8 @@ module.exports = {
 	env: {
 		browser: true,
 		es2021: true,
-		es6: true,
 	},
-	extends: ['eslint:recommended', 'plugin:react/recommended'],
+	extends: ['plugin:react/recommended'],
 	parserOptions: {
 		ecmaFeatures: {
 			jsx: true,
@@ -14,6 +13,14 @@ module.exports = {
 	},
 	plugins: ['react'],
 	rules: {
+		quotes: ['error', 'single', { allowTemplateLiterals: true }],
+		'no-console': ['error', { allow: ['warn', 'error'] }],
+		semi: ['error', 'always'],
 		'react/prop-types': 'off',
+	},
+	settings: {
+		react: {
+			version: 'detect',
+		},
 	},
 };
