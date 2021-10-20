@@ -5,14 +5,14 @@ import CloseIcon from './CloseIcon';
 
 export default function Toast({ children, closeToast }) {
 	useEffect(() => {
-		let interval = setInterval(() => {
+		let timeOut = setTimeout(() => {
 			closeToast(true);
 		}, 5000);
 
 		return () => {
-			clearInterval(interval);
+			clearTimeout(timeOut);
 		};
-	}, [children]);
+	}, []);
 
 	const handleCloseIconClick = () => {
 		closeToast(true);
