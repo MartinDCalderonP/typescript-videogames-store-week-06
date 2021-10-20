@@ -1,6 +1,6 @@
 # Deploy
 
-Link to deployed project on Vercel: [Videogames Store](https://videogames-store-week-5.vercel.app/).
+Link to deployed project on Vercel: [TypeScript Videogames Store](https://typescript-videogames-store-week-06.vercel.app/).
 
 # Getting Started with Create React App
 
