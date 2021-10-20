@@ -1,0 +1,31 @@
+.commentBox {
+	width: 80vw;
+	display: flex;
+	flex-direction: column;
+
+	.commentArea {
+		border: 2px solid #303030;
+		border-radius: 5px;
+		padding: 8px 28px 8px 16px;
+		font-size: 16px;
+		outline-style: none;
+		transition: all 0.3s linear;
+		box-sizing: border-box;
+		resize: none;
+		background-color: var(--backgroundColor);
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+
+		&:hover {
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+		}
+
+		&:focus {
+			border-color: blue;
+		}
+	}
+
+	.notLoggedText {
+		margin-bottom: 20px;
+		text-align: center;
+	}
+}

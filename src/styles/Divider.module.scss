@@ -1,0 +1,8 @@
+.divider {
+	width: 85%;
+	border-bottom: 2px solid darkblue;
+
+	@media (max-width: 599px) {
+		width: 100%;
+	}
+}
