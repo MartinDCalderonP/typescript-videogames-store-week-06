@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from '../styles/Navbar.module.scss';
+import { INavbar } from '../interfaces/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faHome,
@@ -9,7 +10,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Modal from './Modal';
 
-export default function Navbar({ toHome, previousPage, onLoggedUser, user }) {
+export default function Navbar({
+	toHome,
+	previousPage,
+	onLoggedUser,
+	user,
+}: INavbar) {
 	const [openModal, setOpenModal] = useState(false);
 
 	const handleHomeClick = () => {
@@ -33,7 +39,7 @@ export default function Navbar({ toHome, previousPage, onLoggedUser, user }) {
 		setOpenModal(false);
 	};
 
-	const handleLoggedUser = (loggedUser) => {
+	const handleLoggedUser = (loggedUser: any) => {
 		onLoggedUser(loggedUser);
 		setOpenModal(false);
 	};
@@ -67,7 +73,7 @@ export default function Navbar({ toHome, previousPage, onLoggedUser, user }) {
 				)}
 			</nav>
 
-			{openModal && !user && (
+			{openModal && (
 				<Modal closeModal={handleCloseModal} loggedUser={handleLoggedUser} />
 			)}
 		</>

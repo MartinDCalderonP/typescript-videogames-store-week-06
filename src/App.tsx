@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import usePrevious from './hooks/usePrevious';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
@@ -7,8 +6,8 @@ import Detail from './pages/Detail';
 import Footer from './components/Footer';
 
 function App() {
-	const [page, setPage] = useState('home');
-	const [postId, setPostId] = useState(undefined);
+	const [page, setPage] = useState<String | undefined>('home');
+	const [postId, setPostId] = useState(0);
 	const [user, setUser] = useState(null);
 	const previousPage = usePrevious(page);
 
@@ -28,12 +27,12 @@ function App() {
 		setPage(previousPage);
 	};
 
-	const handleToDetail = (postId) => {
+	const handleToDetail = (postId: number) => {
 		setPage('detail');
 		setPostId(postId);
 	};
 
-	const handleLoggedUser = (loggedUser) => {
+	const handleLoggedUser = (loggedUser: any) => {
 		setUser(loggedUser);
 	};
 

@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
+import { IFormData } from '../interfaces/types';
 
-const useAuth = (formData) => {
+export default function useAuth(formData: IFormData) {
 	const [user, setUser] = useState('');
 	const [message, setMessage] = useState('');
 	const fetchUrl = `https://trainee-gamerbox.herokuapp.com/auth/local`;
 
 	useEffect(() => {
 		const signIn = async () => {
-			if (formData) {
+			if (formData.identifier) {
 				fetch(fetchUrl, {
 					method: 'POST',
 					body: JSON.stringify(formData),
@@ -32,6 +33,4 @@ const useAuth = (formData) => {
 	}, [formData, fetchUrl]);
 
 	return { user, message };
-};
-
-export default useAuth;
+}

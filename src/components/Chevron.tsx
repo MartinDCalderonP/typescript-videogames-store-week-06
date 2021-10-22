@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import styles from '../styles/Chevron.module.scss';
+import { IChevron } from '../interfaces/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faChevronUp,
@@ -8,7 +9,7 @@ import {
 	faChevronLeft,
 } from '@fortawesome/free-solid-svg-icons';
 
-export default function Chevron({ className, onClick, orientation }) {
+export default function Chevron({ className, onClick, orientation }: IChevron) {
 	return (
 		<div
 			className={
@@ -25,7 +26,8 @@ export default function Chevron({ className, onClick, orientation }) {
 					(orientation === 'top' && faChevronUp) ||
 					(orientation === 'right' && faChevronRight) ||
 					(orientation === 'down' && faChevronDown) ||
-					(orientation === 'left' && faChevronLeft)
+					(orientation === 'left' && faChevronLeft) ||
+					faChevronUp
 				}
 			/>
 		</div>

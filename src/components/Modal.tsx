@@ -2,14 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styles from '../styles/Modal.module.scss';
 import useAuth from '../hooks/useAuth';
+import { IModal } from '../interfaces/types';
 import CloseIcon from './CloseIcon';
 import Button from './Button';
 import Toast from './Toast';
 
-export default function Modal({ closeModal, loggedUser }) {
-	const [username, setUsername] = useState('');
+export default function Modal({ closeModal, loggedUser }: IModal) {
+	const [identifier, setIdentifier] = useState('');
 	const [password, setPassword] = useState('');
-	const [formData, setFormData] = useState('');
+	const [formData, setFormData] = useState({
+		identifier,
+		password,
+	});
 	const { user, message } = useAuth(formData);
 	const [openToast, setOpenToast] = useState(false);
 
@@ -23,20 +27,20 @@ export default function Modal({ closeModal, loggedUser }) {
 		closeModal(true);
 	};
 
-	const handleUsernameChange = (e) => {
-		setUsername(e.target.value);
+	const handleIdentifierChange = (e: React.FormEvent<HTMLInputElement>) => {
+		setIdentifier(e.currentTarget.value);
 	};
 
-	const handlePasswordChange = (e) => {
-		setPassword(e.target.value);
+	const handlePasswordChange = (e: React.FormEvent<HTMLInputElement>) => {
+		setPassword(e.currentTarget.value);
 	};
 
-	const handleSignInButton = async (e) => {
+	const handleSignInButton = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 
 		setFormData({
-			identifier: username,
-			password: password,
+			identifier,
+			password,
 		});
 
 		setOpenToast(true);
@@ -58,11 +62,11 @@ export default function Modal({ closeModal, loggedUser }) {
 
 				<form className={styles.signInForm}>
 					<input
-						value={username}
-						onChange={handleUsernameChange}
+						value={identifier}
+						onChange={handleIdentifierChange}
 						type="text"
-						name="Username"
-						placeholder="Username"
+						name="Identifier"
+						placeholder="Identifier"
 					/>
 
 					<input
@@ -81,6 +85,6 @@ export default function Modal({ closeModal, loggedUser }) {
 				<Toast closeToast={handleCloseToast}>{message}</Toast>
 			)}
 		</div>,
-		document.getElementById('portal')
+		document.getElementById('portal')!
 	);
 }

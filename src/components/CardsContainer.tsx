@@ -1,9 +1,14 @@
 import React from 'react';
 import styles from '../styles/CardsContainer.module.scss';
+import { ICardsContainer } from '../interfaces/types';
 import Spinner from './Spinner';
 import Card from './Card';
 
-export default function CardsContainer({ loading, posts, toDetail }) {
+export default function CardsContainer({
+	loading,
+	posts,
+	toDetail,
+}: ICardsContainer) {
 	return (
 		<div className={styles.cardsContainer}>
 			{loading && <Spinner />}

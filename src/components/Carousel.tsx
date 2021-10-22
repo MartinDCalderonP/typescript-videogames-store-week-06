@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import styles from '../styles/Carousel.module.scss';
 import useFetch from '../hooks/useFetch';
+import { ICarousel } from '../interfaces/types';
 import Spinner from './Spinner';
 import Chevron from './Chevron';
 
-export default function Carousel({ toDetail }) {
+export default function Carousel({ toDetail }: ICarousel) {
 	const fetchUrl = `https://trainee-gamerbox.herokuapp.com/games?_start=1&_limit=4`;
 	const { data, loading } = useFetch(fetchUrl);
 	const [currentSlide, setCurrentSlide] = useState(0);
 
 	useEffect(() => {
-		let interval;
+		let interval: NodeJS.Timer;
 
 		if (data?.length > 0) {
 			interval = setInterval(() => {
@@ -25,7 +26,7 @@ export default function Carousel({ toDetail }) {
 		};
 	}, [data?.length]);
 
-	const handleCarouselItemClick = (postId) => {
+	const handleCarouselItemClick = (postId: number) => {
 		toDetail(postId);
 	};
 
@@ -41,7 +42,7 @@ export default function Carousel({ toDetail }) {
 		);
 	};
 
-	const handleDotClick = (carouselStep) => {
+	const handleDotClick = (carouselStep: number) => {
 		setCurrentSlide(carouselStep);
 	};
 
@@ -49,7 +50,7 @@ export default function Carousel({ toDetail }) {
 		<>
 			{loading && <Spinner />}
 
-			{!loading && data && (
+			{!loading && data.length > 0 && (
 				<div className={styles.carousel}>
 					<Chevron
 						className={styles.previous}
@@ -79,7 +80,7 @@ export default function Carousel({ toDetail }) {
 					/>
 
 					<div className={styles.dotsContainer}>
-						{data?.map((item, i) => (
+						{data?.map((_: any, i: number) => (
 							<span
 								className={
 									styles.dot + (currentSlide === i ? ` ${styles.active}` : '')

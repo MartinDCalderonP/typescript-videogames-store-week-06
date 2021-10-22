@@ -1,7 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
+import { IUseFetch } from '../interfaces/types';
 
-const useFetch = (fetchUrl) => {
-	const [data, setData] = useState(null);
+export default function useFetch<T>(fetchUrl: string): IUseFetch<T> {
+	const [data, setData] = useState<T>();
 	const [loading, setLoading] = useState(true);
 
 	const fetchData = useCallback(async () => {
@@ -21,6 +22,4 @@ const useFetch = (fetchUrl) => {
 	}, [fetchData]);
 
 	return { data, loading, fetchData };
-};
-
-export default useFetch;
+}

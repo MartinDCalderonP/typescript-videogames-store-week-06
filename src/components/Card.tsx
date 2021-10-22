@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import styles from '../styles/Card.module.scss';
+import { ICard } from '../interfaces/types';
 import defaultImage from '../img/gameDefault.png';
 
-export default function Card({ name, image, onClick }) {
+export default function Card({ name, image, onClick }: ICard) {
 	return (
 		<div className={`${styles.card} ${styles.appearCard}`} onClick={onClick}>
 			<p>{name}</p>

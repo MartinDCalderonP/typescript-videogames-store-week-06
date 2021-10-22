@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/Detail.module.scss';
 import useFetch from '../hooks/useFetch';
+import { IDetail } from '../interfaces/types';
 import { getNamesFromArray } from '../components/Helpers';
 import Spinner from '../components/Spinner';
 import defaultImage from '../img/gameDefault.png';
@@ -8,7 +9,7 @@ import CommentBox from '../components/CommentBox';
 import Divider from '../components/Divider';
 import CommentsList from '../components/CommentsList';
 
-export default function Detail({ postId, user }) {
+export default function Detail({ postId, user }: IDetail) {
 	const fetchUrl = `https://trainee-gamerbox.herokuapp.com/games/${postId}`;
 	const { data, loading } = useFetch(fetchUrl);
 	const [updater, setUpdater] = useState(0);

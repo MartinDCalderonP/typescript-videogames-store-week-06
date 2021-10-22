@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
 import styles from '../styles/CommentsList.module.scss';
 import useFetch from '../hooks/useFetch';
+import { ICommentsList, IComment } from '../interfaces/types';
 import { formatDate } from './Helpers';
 import Spinner from './Spinner';
 
-export default function CommentsList({ postId, updateFetchData }) {
+export default function CommentsList({
+	postId,
+	updateFetchData,
+}: ICommentsList) {
 	const fetchUrl = `https://trainee-gamerbox.herokuapp.com/games/${postId}/comments`;
 	const { data, loading, fetchData } = useFetch(fetchUrl);
 
@@ -21,7 +25,7 @@ export default function CommentsList({ postId, updateFetchData }) {
 			{!loading &&
 				data?.length > 0 &&
 				data
-					?.map((item) => (
+					?.map((item: IComment) => (
 						<div key={`comment${item.id}`}>
 							<p>
 								{`${item.user.firstName} ${item.user.lastName} `}

@@ -1,7 +1,9 @@
-export const formatDate = (dateString) => {
+import { IProperty } from '../interfaces/types';
+
+export const formatDate = (dateString: string) => {
 	const insertedDate = new Date(dateString);
 	const nowDate = Date.now();
-	const timeDifference = Math.abs(nowDate - insertedDate);
+	const timeDifference = Math.abs(nowDate - insertedDate.getTime());
 
 	const differences = {
 		minutes: Math.ceil(timeDifference / (1000 * 60)),
@@ -19,6 +21,6 @@ export const formatDate = (dateString) => {
 		: `${differences['months']} months ago`;
 };
 
-export const getNamesFromArray = (array) => {
+export const getNamesFromArray = (array: Array<IProperty>) => {
 	return array?.map((item) => item.name).join(', ');
 };

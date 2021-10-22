@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import styles from '../styles/CloseIcon.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { ICloseIcon } from '../interfaces/types';
 
-export default function CloseIcon({ className, onClick }) {
+export default function CloseIcon({ className, onClick }: ICloseIcon) {
 	return (
 		<FontAwesomeIcon
 			className={styles.closeIcon + (className ? ` ${className}` : '')}

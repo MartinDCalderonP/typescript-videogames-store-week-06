@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styles from '../styles/Toast.module.scss';
+import { IToast } from '../interfaces/types';
 import CloseIcon from './CloseIcon';
 
-export default function Toast({ children, closeToast }) {
+export default function Toast({ children, closeToast }: IToast) {
 	useEffect(() => {
 		let timeOut = setTimeout(() => {
 			closeToast(true);
@@ -24,6 +25,6 @@ export default function Toast({ children, closeToast }) {
 
 			<CloseIcon className={styles.closeIcon} onClick={handleCloseIconClick} />
 		</div>,
-		document.getElementById('portal')
+		document.getElementById('portal')!
 	);
 }
