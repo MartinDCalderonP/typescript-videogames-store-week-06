@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
@@ -32,6 +32,8 @@ export default function App() {
 				<Route exact path="/game/:postId">
 					<Detail user={user} />
 				</Route>
+
+				<Redirect to={{ pathname: '/' }} />
 			</Switch>
 
 			<Footer />
