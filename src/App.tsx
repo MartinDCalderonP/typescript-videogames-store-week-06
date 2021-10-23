@@ -1,14 +1,20 @@
 import React, { useState, useEffect } from 'react';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+} from 'react-router-dom';
 import usePrevious from './hooks/usePrevious';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Footer from './components/Footer';
 
-function App() {
+export default function App() {
 	const [page, setPage] = useState<String | undefined>('home');
 	const [postId, setPostId] = useState(0);
-	const [user, setUser] = useState(null);
+	const [user, setUser] = useState('');
 	const previousPage = usePrevious(page);
 
 	useEffect(() => {
@@ -37,21 +43,24 @@ function App() {
 	};
 
 	return (
-		<div className="App">
+		<Router>
 			<Navbar
-				toHome={handleToHome}
 				previousPage={handlePreviousPage}
 				onLoggedUser={handleLoggedUser}
 				user={user}
 			/>
 
-			{page === 'home' && <Home toDetail={handleToDetail} />}
+			<Switch>
+				<Route exact path="/">
+					<Home toDetail={handleToDetail} />
+				</Route>
 
-			{page === 'detail' && <Detail postId={postId} user={user} />}
+				<Route exact path="/game/:postId">
+					<Detail user={user} />
+				</Route>
+			</Switch>
 
 			<Footer />
-		</div>
+		</Router>
 	);
 }
-
-export default App;
