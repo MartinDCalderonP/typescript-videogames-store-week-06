@@ -76,7 +76,6 @@ export interface IModal {
 }
 
 export interface INavbar {
-	toHome: (toHome: boolean) => void;
 	previousPage: (previousPage: boolean) => void;
 	onLoggedUser: (onLoggedUser: any) => void;
 	user: any;
@@ -104,8 +103,11 @@ export interface IUseFetch<T> {
 }
 
 export interface IDetail {
-	postId: number;
 	user: any;
+}
+
+export interface IPostId {
+	postId: string;
 }
 
 export interface IHome {
