@@ -13,13 +13,22 @@
 		align-items: center;
 		cursor: pointer;
 
-		.goBack,
-		.home {
+		.goBack {
 			margin: 0 15px 0 30px;
 		}
 
 		.signIn {
 			margin: 0 30px 0 15px;
+		}
+	}
+
+	> a {
+		display: flex;
+		align-items: center;
+		text-decoration: none;
+
+		.home {
+			margin: 0 15px 0 0;
 		}
 	}
 }

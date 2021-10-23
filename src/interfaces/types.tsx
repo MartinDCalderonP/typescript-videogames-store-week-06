@@ -76,7 +76,6 @@ export interface IModal {
 }
 
 export interface INavbar {
-	previousPage: (previousPage: boolean) => void;
 	onLoggedUser: (onLoggedUser: any) => void;
 	user: any;
 }

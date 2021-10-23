@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import styles from '../styles/Navbar.module.scss';
 import { INavbar } from '../interfaces/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -10,20 +11,12 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import Modal from './Modal';
 
-export default function Navbar({
-	toHome,
-	previousPage,
-	onLoggedUser,
-	user,
-}: INavbar) {
+export default function Navbar({ onLoggedUser, user }: INavbar) {
 	const [openModal, setOpenModal] = useState(false);
+	const history = useHistory();
 
-	const handleHomeClick = () => {
-		toHome(true);
-	};
-
-	const handlePreviousClick = () => {
-		previousPage(true);
+	const toPreviousPage = () => {
+		history.goBack();
 	};
 
 	const handleSignInClick = () => {
@@ -47,7 +40,7 @@ export default function Navbar({
 	return (
 		<>
 			<nav className={styles.navbar}>
-				<div onClick={handlePreviousClick}>
+				<div onClick={toPreviousPage}>
 					<FontAwesomeIcon
 						className={styles.goBack}
 						icon={faArrowAltCircleLeft}
@@ -55,10 +48,10 @@ export default function Navbar({
 					Go Back
 				</div>
 
-				<div onClick={handleHomeClick}>
+				<Link to="/">
 					<FontAwesomeIcon className={styles.home} icon={faHome} />
 					Home
-				</div>
+				</Link>
 
 				{!user ? (
 					<div onClick={handleSignInClick}>
