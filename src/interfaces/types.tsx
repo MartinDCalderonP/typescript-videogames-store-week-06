@@ -7,9 +7,9 @@ export interface IButton {
 }
 
 export interface ICard {
+	id: number;
 	name: string;
 	image: string;
-	onClick: MouseEventHandler;
 }
 
 interface IPost {
@@ -28,11 +28,6 @@ interface IPost {
 export interface ICardsContainer {
 	loading: boolean;
 	posts: Array<IPost>;
-	toDetail: (toDetail: number) => void;
-}
-
-export interface ICarousel {
-	toDetail: (toDetail: number) => void;
 }
 
 export interface IChevron {
@@ -107,8 +102,4 @@ export interface IDetail {
 
 export interface IPostId {
 	postId: string;
-}
-
-export interface IHome {
-	toDetail: (toDetail: number) => void;
 }

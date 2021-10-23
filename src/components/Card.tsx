@@ -1,11 +1,12 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../styles/Card.module.scss';
 import { ICard } from '../interfaces/types';
 import defaultImage from '../img/gameDefault.png';
 
-export default function Card({ name, image, onClick }: ICard) {
+export default function Card({ id, name, image }: ICard) {
 	return (
-		<div className={`${styles.card} ${styles.appearCard}`} onClick={onClick}>
+		<Link className={`${styles.card} ${styles.appearCard}`} to={`/game/${id}`}>
 			<p>{name}</p>
 			<div className={styles.cardImage}>
 				<img
@@ -14,6 +15,6 @@ export default function Card({ name, image, onClick }: ICard) {
 					alt={name}
 				/>
 			</div>
-		</div>
+		</Link>
 	);
 }

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../styles/Carousel.module.scss';
 import useFetch from '../hooks/useFetch';
-import { ICarousel } from '../interfaces/types';
 import Spinner from './Spinner';
 import Chevron from './Chevron';
 
-export default function Carousel({ toDetail }: ICarousel) {
+export default function Carousel() {
 	const fetchUrl = `https://trainee-gamerbox.herokuapp.com/games?_start=1&_limit=4`;
 	const { data, loading } = useFetch(fetchUrl);
 	const [currentSlide, setCurrentSlide] = useState(0);
@@ -25,10 +25,6 @@ export default function Carousel({ toDetail }: ICarousel) {
 			clearInterval(interval);
 		};
 	}, [data?.length]);
-
-	const handleCarouselItemClick = (postId: number) => {
-		toDetail(postId);
-	};
 
 	const handlePreviousClick = () => {
 		setCurrentSlide((current) =>
@@ -58,9 +54,9 @@ export default function Carousel({ toDetail }: ICarousel) {
 						orientation="left"
 					/>
 
-					<div
+					<Link
 						className={`${styles.carouselItem} ${styles.fade}`}
-						onClick={() => handleCarouselItemClick(data[currentSlide]?.id)}
+						to={`/game/${data[currentSlide]?.id}`}
 					>
 						<h1>{data[currentSlide]?.name}</h1>
 
@@ -71,7 +67,7 @@ export default function Carousel({ toDetail }: ICarousel) {
 							src={data[currentSlide]?.cover_art?.url}
 							alt={data[currentSlide]?.name}
 						/>
-					</div>
+					</Link>
 
 					<Chevron
 						className={styles.next}

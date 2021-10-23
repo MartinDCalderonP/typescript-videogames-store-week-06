@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import {
-	BrowserRouter as Router,
-	Switch,
-	Route,
-} from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Footer from './components/Footer';
 
 export default function App() {
-	const [page, setPage] = useState<String | undefined>('home');
-	const [postId, setPostId] = useState(0);
 	const [user, setUser] = useState('');
 
 	useEffect(() => {
@@ -22,25 +16,17 @@ export default function App() {
 		}
 	}, []);
 
-	const handleToDetail = (postId: number) => {
-		setPage('detail');
-		setPostId(postId);
-	};
-
 	const handleLoggedUser = (loggedUser: any) => {
 		setUser(loggedUser);
 	};
 
 	return (
-		<Router>
-			<Navbar
-				onLoggedUser={handleLoggedUser}
-				user={user}
-			/>
+		<BrowserRouter>
+			<Navbar onLoggedUser={handleLoggedUser} user={user} />
 
 			<Switch>
 				<Route exact path="/">
-					<Home toDetail={handleToDetail} />
+					<Home />
 				</Route>
 
 				<Route exact path="/game/:postId">
@@ -49,6 +35,6 @@ export default function App() {
 			</Switch>
 
 			<Footer />
-		</Router>
+		</BrowserRouter>
 	);
 }
