@@ -41,7 +41,7 @@ export default function Search() {
 		e.preventDefault();
 
 		if (searchedTerm.term !== '') {
-			history.push(`/query=${searchedTerm.term.replace(' ', '+')}`);
+			history.push(`/search=${searchedTerm.term.replace(' ', '+')}`);
 		}
 	};
 
