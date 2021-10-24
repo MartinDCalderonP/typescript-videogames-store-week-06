@@ -103,3 +103,7 @@ export interface IDetail {
 export interface IPostId {
 	postId: string;
 }
+
+export interface ISearchedTerm {
+	searchedTerm: string;
+}
