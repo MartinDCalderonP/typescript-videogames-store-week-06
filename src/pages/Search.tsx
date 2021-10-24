@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles/Search.module.scss';
 import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
-import { ISearchedTerm } from '../interfaces/types';
+import { ISearchedTerm } from '../common/types';
 import CardsContainer from '../components/CardsContainer';
 import Spinner from '../components/Spinner';
 

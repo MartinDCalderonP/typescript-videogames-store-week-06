@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/Navbar.module.scss';
 import { Link } from 'react-router-dom';
-import { INavbar } from '../interfaces/types';
+import { INavbar } from '../common/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faHome,

@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { IUseFetch } from '../interfaces/types';
+import { IUseFetch } from '../common/types';
 
 export default function useFetch<T>(fetchUrl: string): IUseFetch<T> {
 	const [data, setData] = useState<T>();

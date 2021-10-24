@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import styles from '../styles/CommentBox.module.scss';
-import { ICommentBox } from '../interfaces/types';
+import { ICommentBox } from '../common/types';
 import Button from './Button';
 import Toast from './Toast';
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { IFormData } from '../interfaces/types';
+import { IFormData } from '../common/types';
 
 export default function useAuth(formData: IFormData) {
 	const [user, setUser] = useState('');

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '../styles/Card.module.scss';
 import { Link } from 'react-router-dom';
-import { ICard } from '../interfaces/types';
+import { ICard } from '../common/types';
 import defaultImage from '../img/gameDefault.png';
 
 export default function Card({ id, name, image }: ICard) {

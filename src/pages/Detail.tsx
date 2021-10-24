@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../styles/Detail.module.scss';
 import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
-import { IDetail, IPostId } from '../interfaces/types';
+import { IDetail, IPostId } from '../common/types';
 import { getNamesFromArray } from '../components/Helpers';
 import Spinner from '../components/Spinner';
 import defaultImage from '../img/gameDefault.png';

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styles from '../styles/Toast.module.scss';
-import { IToast } from '../interfaces/types';
+import { IToast } from '../common/types';
 import CloseIcon from './CloseIcon';
 
 export default function Toast({ children, closeToast }: IToast) {

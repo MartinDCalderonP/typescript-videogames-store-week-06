@@ -1,4 +1,4 @@
-import { IProperty } from '../interfaces/types';
+import { IProperty } from '../common/types';
 
 export const formatDate = (dateString: string) => {
 	const insertedDate = new Date(dateString);

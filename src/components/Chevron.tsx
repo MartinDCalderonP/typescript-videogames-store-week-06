@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/Chevron.module.scss';
-import { IChevron } from '../interfaces/types';
+import { IChevron } from '../common/types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	IconDefinition,

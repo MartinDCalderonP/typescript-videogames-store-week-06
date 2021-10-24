@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styles from '../styles/Modal.module.scss';
 import useAuth from '../hooks/useAuth';
-import { IModal } from '../interfaces/types';
+import { IModal } from '../common/types';
 import CloseIcon from './CloseIcon';
 import Button from './Button';
 import Toast from './Toast';

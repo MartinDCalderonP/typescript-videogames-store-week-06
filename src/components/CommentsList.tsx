@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from '../styles/CommentsList.module.scss';
 import useFetch from '../hooks/useFetch';
-import { ICommentsList, IComment } from '../interfaces/types';
+import { ICommentsList, IComment } from '../common/types';
 import { formatDate } from './Helpers';
 import Spinner from './Spinner';
 

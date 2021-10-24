@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from '../styles/CardsContainer.module.scss';
-import { ICardsContainer } from '../interfaces/types';
+import { ICardsContainer } from '../common/types';
 import Spinner from './Spinner';
 import Card from './Card';
 

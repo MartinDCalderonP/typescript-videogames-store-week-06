@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styles from '../styles/PaginationButtons.module.scss';
 import useFetch from '../hooks/useFetch';
-import { IPaginationButtons } from '../interfaces/types';
+import { IPaginationButtons } from '../common/types';
 
 export default function PaginationButtons({
 	postsPerPage,
