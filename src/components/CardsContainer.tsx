@@ -4,9 +4,13 @@ import { ICardsContainer } from '../common/types';
 import Spinner from './Spinner';
 import Card from './Card';
 
-export default function CardsContainer({ loading, posts }: ICardsContainer) {
+export default function CardsContainer({
+	className,
+	loading,
+	posts,
+}: ICardsContainer) {
 	return (
-		<div className={styles.cardsContainer}>
+		<div className={styles.cardsContainer + (className ? ` ${className}` : '')}>
 			{loading && <Spinner />}
 
 			{!loading &&

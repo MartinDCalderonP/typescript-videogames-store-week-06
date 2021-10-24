@@ -19,7 +19,11 @@ export default function Search() {
 				<>
 					<h1>{`Results for "${searchedTerm}"`}</h1>
 
-					<CardsContainer loading={loading} posts={data} />
+					<CardsContainer
+						className={styles.results}
+						loading={loading}
+						posts={data}
+					/>
 				</>
 			)}
 

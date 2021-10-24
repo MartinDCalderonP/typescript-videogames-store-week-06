@@ -26,6 +26,7 @@ interface IPost {
 }
 
 export interface ICardsContainer {
+	className?: string;
 	loading: boolean;
 	posts: Array<IPost>;
 }
