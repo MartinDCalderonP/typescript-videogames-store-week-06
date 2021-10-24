@@ -8,6 +8,7 @@ import {
 	faSignInAlt,
 	faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
+import Search from './SearchInput';
 import Modal from './Modal';
 
 export default function Navbar({ onLoggedUser, user }: INavbar) {
@@ -38,6 +39,8 @@ export default function Navbar({ onLoggedUser, user }: INavbar) {
 					<FontAwesomeIcon className={styles.home} icon={faHome} />
 					Home
 				</Link>
+
+				<Search />
 
 				{!user ? (
 					<div onClick={handleSignInClick}>
