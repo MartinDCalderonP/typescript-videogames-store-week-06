@@ -1,6 +1,7 @@
 import React, { useReducer } from 'react';
 import styles from '../styles/SearchInput.module.scss';
 import { useHistory } from 'react-router-dom';
+import { paths } from '../common/enums';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
@@ -41,7 +42,7 @@ export default function Search() {
 		e.preventDefault();
 
 		if (searchedTerm.term !== '') {
-			history.push(`/search=${searchedTerm.term.replace(' ', '+')}`);
+			history.push(`${paths.search}${searchedTerm.term.replace(' ', '+')}`);
 		}
 	};
 

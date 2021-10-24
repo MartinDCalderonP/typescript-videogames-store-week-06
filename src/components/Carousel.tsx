@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from '../styles/Carousel.module.scss';
 import { Link } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
+import { paths } from './common/enums';
 import Spinner from './Spinner';
 import Chevron from './Chevron';
 
@@ -56,7 +57,7 @@ export default function Carousel() {
 
 					<Link
 						className={`${styles.carouselItem} ${styles.fade}`}
-						to={`/game/${data[currentSlide]?.id}`}
+						to={`${paths.game}${data[currentSlide]?.id}`}
 					>
 						<h1>{data[currentSlide]?.name}</h1>
 

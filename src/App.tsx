@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import useLocalStorage from './hooks/useLocalStorage';
+import { paths } from './common/enums';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
@@ -23,11 +24,11 @@ export default function App() {
 					<Home />
 				</Route>
 
-				<Route exact path="/game/:postId">
+				<Route exact path={`${paths.game}:postId`}>
 					<Detail user={user} />
 				</Route>
 
-				<Route exact path="/search=:searchedTerm">
+				<Route exact path={`${paths.search}:searchedTerm`}>
 					<Search />
 				</Route>
 
