@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import styles from '../styles/Detail.module.scss';
+import { useParams } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 import { IDetail, IPostId } from '../interfaces/types';
 import { getNamesFromArray } from '../components/Helpers';

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from '../styles/Card.module.scss';
+import { Link } from 'react-router-dom';
 import { ICard } from '../interfaces/types';
 import defaultImage from '../img/gameDefault.png';
 
