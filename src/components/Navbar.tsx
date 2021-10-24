@@ -20,7 +20,7 @@ export default function Navbar({ onLoggedUser, user }: INavbar) {
 
 	const handleSignOutClick = () => {
 		onLoggedUser(null);
-		localStorage.removeItem('user');
+		window.localStorage.removeItem('user');
 	};
 
 	const handleCloseModal = () => {

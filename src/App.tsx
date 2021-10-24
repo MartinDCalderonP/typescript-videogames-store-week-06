@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import useLocalStorage from './hooks/useLocalStorage';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
@@ -7,15 +8,7 @@ import Search from './pages/Search';
 import Footer from './components/Footer';
 
 export default function App() {
-	const [user, setUser] = useState('');
-
-	useEffect(() => {
-		const storagedUser = localStorage.getItem('user');
-
-		if (storagedUser) {
-			setUser(JSON.parse(storagedUser));
-		}
-	}, []);
+	const [user, setUser] = useLocalStorage<string>('user', '');
 
 	const handleLoggedUser = (loggedUser: any) => {
 		setUser(loggedUser);
