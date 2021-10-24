@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from '../styles/Carousel.module.scss';
 import { Link } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
-import { paths } from './common/enums';
+import { paths } from '../common/enums';
 import Spinner from './Spinner';
 import Chevron from './Chevron';
 
