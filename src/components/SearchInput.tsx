@@ -1,5 +1,5 @@
 import React, { useReducer } from 'react';
-import styles from '../styles/Search.module.scss';
+import styles from '../styles/SearchInput.module.scss';
 import { useHistory } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
