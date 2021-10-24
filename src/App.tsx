@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
+import Search from './pages/Search';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -31,6 +32,10 @@ export default function App() {
 
 				<Route exact path="/game/:postId">
 					<Detail user={user} />
+				</Route>
+
+				<Route exact path="/search=:searchedTerm">
+					<Search />
 				</Route>
 
 				<Redirect to={{ pathname: '/' }} />
