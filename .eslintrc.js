@@ -14,10 +14,10 @@ module.exports = {
 	},
 	plugins: ['react', '@typescript-eslint'],
 	rules: {
-		quotes: ['error', 'single', { allowTemplateLiterals: true }],
 		'no-console': ['error', { allow: ['warn', 'error'] }],
-		semi: ['error', 'always'],
 		'react/prop-types': 'off',
+		quotes: ['error', 'single', { allowTemplateLiterals: true }],
+		semi: ['error', 'always'],
 	},
 	settings: {
 		react: {
