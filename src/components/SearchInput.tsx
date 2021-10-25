@@ -1,4 +1,4 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, memo } from 'react';
 import styles from '../styles/SearchInput.module.scss';
 import { useHistory } from 'react-router-dom';
 import { paths } from '../common/enums';
@@ -28,9 +28,10 @@ const reducer = (state: typeof initialState, action: actionTypes) => {
 	}
 };
 
-export default function Search() {
-	const [openSuggestions, setOpenSuggestions] = useState(false);
+export default memo(function Search() {
 	const [searchedTerm, dispatch] = useReducer(reducer, initialState);
+	const [openSuggestions, setOpenSuggestions] = useState(false);
+	const [pressedKey, setPressedKey] = useState(0);
 	const history = useHistory();
 
 	const handleSearchedTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -67,12 +68,17 @@ export default function Search() {
 		setOpenSuggestions(false);
 	};
 
+	const handleKeyNavigation = (e: any) => {
+		setPressedKey(e);
+	};
+
 	return (
-		<form className={styles.searchForm}>
+		<form className={styles.searchForm} autoComplete="off">
 			<div className={styles.searchInput}>
 				<input
 					value={searchedTerm.term}
 					onChange={handleSearchedTermChange}
+					onKeyDown={handleKeyNavigation}
 					type="text"
 					name="search"
 					placeholder="Search"
@@ -91,8 +97,9 @@ export default function Search() {
 					searchedTerm={searchedTerm.term}
 					suggestionSelected={handleSuggestionSelected}
 					closeSuggestions={handleCloseSuggestions}
+					pressedKey={pressedKey}
 				/>
 			)}
 		</form>
 	);
-}
+});
