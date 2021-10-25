@@ -95,7 +95,7 @@ export interface IFormData {
 export interface IUseFetch<T> {
 	data: any;
 	loading: boolean;
-	fetchData: () => void;
+	fetchData: (signal: AbortSignal) => void;
 }
 
 export interface IDetail {
