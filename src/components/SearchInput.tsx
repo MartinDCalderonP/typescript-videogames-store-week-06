@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useState, useReducer } from 'react';
 import styles from '../styles/SearchInput.module.scss';
 import { useHistory } from 'react-router-dom';
 import { paths } from '../common/enums';
@@ -29,6 +29,7 @@ const reducer = (state: typeof initialState, action: actionTypes) => {
 };
 
 export default function Search() {
+	const [openSuggestions, setOpenSuggestions] = useState(false);
 	const [searchedTerm, dispatch] = useReducer(reducer, initialState);
 	const history = useHistory();
 
@@ -37,6 +38,8 @@ export default function Search() {
 			type: 'SET_SEARCH_TERM',
 			term: e.target.value,
 		});
+
+		setOpenSuggestions(true);
 	};
 
 	const searchTerm = (term: string) => {
@@ -60,6 +63,10 @@ export default function Search() {
 		searchTerm(suggestionSelected);
 	};
 
+	const handleCloseSuggestions = () => {
+		setOpenSuggestions(false);
+	};
+
 	return (
 		<form className={styles.searchForm}>
 			<div className={styles.searchInput}>
@@ -79,10 +86,11 @@ export default function Search() {
 				</button>
 			</div>
 
-			{searchedTerm.term !== '' && (
+			{openSuggestions && (
 				<SuggestionsList
 					searchedTerm={searchedTerm.term}
 					suggestionSelected={handleSuggestionSelected}
+					closeSuggestions={handleCloseSuggestions}
 				/>
 			)}
 		</form>
