@@ -39,16 +39,12 @@ export default function Search() {
 		});
 	};
 
-	const searchTerm = () => {
-		if (searchedTerm.term !== '') {
-			history.push(`${paths.search}${searchedTerm.term.replace(' ', '+')}`);
-		}
-	};
-
 	const handleSearchButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 
-		searchTerm();
+		if (searchedTerm.term !== '') {
+			history.push(`${paths.search}${searchedTerm.term.replaceAll(' ', '+')}`);
+		}
 	};
 
 	const handleSuggestionSelected = (suggestionSelected: string) => {
@@ -57,7 +53,7 @@ export default function Search() {
 			term: suggestionSelected,
 		});
 
-		searchTerm();
+		history.push(`${paths.search}${suggestionSelected.replaceAll(' ', '+')}`);
 	};
 
 	return (
