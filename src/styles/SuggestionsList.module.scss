@@ -1,0 +1,28 @@
+.suggestionsList {
+	list-style-type: none;
+	background-color: var(--backgroundColor);
+	border: 1px solid var(--detailsColor);
+	border-radius: 0 0 3px 3px;
+	padding: 10px 0;
+	position: absolute;
+	z-index: 100;
+	transition: all 0.3s linear;
+
+	&:hover {
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+		border-color: black;
+	}
+
+	.suggestionListItem {
+		width: 40vw;
+		font-size: 1rem;
+		background-color: transparent;
+		color: var(--lettersColor);
+		padding: 10px 20px;
+		cursor: pointer;
+
+		&:hover {
+			background-color: #404040;
+		}
+	}
+}

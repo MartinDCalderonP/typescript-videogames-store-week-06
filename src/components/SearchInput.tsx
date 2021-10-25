@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { paths } from '../common/enums';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import SuggestionsList from './SuggestionsList';
 
 const initialState = {
 	term: '',
@@ -64,6 +65,10 @@ export default function Search() {
 					<FontAwesomeIcon icon={faSearch} />
 				</button>
 			</div>
+
+			{searchedTerm.term !== '' && (
+				<SuggestionsList searchedTerm={searchedTerm.term} />
+			)}
 		</form>
 	);
 }

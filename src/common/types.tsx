@@ -109,3 +109,7 @@ export interface IPostId {
 export interface ISearchedTerm {
 	searchedTerm: string;
 }
+
+export interface ISuggestionsList {
+	searchedTerm: string;
+}
