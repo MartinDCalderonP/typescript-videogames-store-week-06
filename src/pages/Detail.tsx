@@ -21,7 +21,7 @@ export default function Detail({ user }: IDetail) {
 	};
 
 	return (
-		<div className={styles.container}>
+		<div className={styles.detailPage}>
 			{loading && <Spinner />}
 
 			{!loading && data && (
