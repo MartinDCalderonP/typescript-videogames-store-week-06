@@ -6,10 +6,12 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Detail from './pages/Detail';
 import Search from './pages/Search';
+import PrivateRoute from './components/PrivateRoute';
+import Profile from './pages/Profile';
 import Footer from './components/Footer';
 
 export default function App() {
-	const [user, setUser] = useLocalStorage<string>('user', '');
+	const [user, setUser] = useLocalStorage('user', '');
 
 	const handleLoggedUser = (loggedUser: any) => {
 		setUser(loggedUser);
@@ -31,6 +33,10 @@ export default function App() {
 				<Route exact path={`${paths.search}:searchedTerm`}>
 					<Search />
 				</Route>
+
+				<PrivateRoute exact path={`${paths.profile}:userId`} user={user}>
+					<Profile />
+				</PrivateRoute>
 
 				<Redirect to={{ pathname: '/' }} />
 			</Switch>
