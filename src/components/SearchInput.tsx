@@ -39,11 +39,15 @@ export default function Search() {
 		});
 	};
 
+	const searchTerm = (term: string) => {
+		history.push(`${paths.search}${term.replaceAll(' ', '+')}`);
+	};
+
 	const handleSearchButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 
 		if (searchedTerm.term !== '') {
-			history.push(`${paths.search}${searchedTerm.term.replaceAll(' ', '+')}`);
+			searchTerm(searchedTerm.term);
 		}
 	};
 
@@ -53,7 +57,7 @@ export default function Search() {
 			term: suggestionSelected,
 		});
 
-		history.push(`${paths.search}${suggestionSelected.replaceAll(' ', '+')}`);
+		searchTerm(suggestionSelected);
 	};
 
 	return (
