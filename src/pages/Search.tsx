@@ -36,11 +36,13 @@ export default function Search() {
 						posts={currentPosts}
 					/>
 
-					<PaginationButtons
-						totalPosts={data.length}
-						postsPerPage={postsPerPage}
-						paginate={handlePaginate}
-					/>
+					{currentPosts > data.length && (
+						<PaginationButtons
+							totalPosts={data.length}
+							postsPerPage={postsPerPage}
+							paginate={handlePaginate}
+						/>
+					)}
 				</>
 			)}
 
