@@ -4,6 +4,7 @@ import useFetch from '../hooks/useFetch';
 import { IPaginationButtons } from '../common/types';
 
 export default function PaginationButtons({
+	totalPosts,
 	postsPerPage,
 	paginate,
 }: IPaginationButtons) {
@@ -12,7 +13,7 @@ export default function PaginationButtons({
 	const [currentPage, setCurrentPage] = useState(1);
 	const pagesNumbers = React.useMemo(() => {
 		return Array.from(
-			{ length: Math.ceil(data / postsPerPage) },
+			{ length: Math.ceil((totalPosts || data) / postsPerPage) },
 			(_, i) => 1 + i
 		);
 	}, [data, postsPerPage]);

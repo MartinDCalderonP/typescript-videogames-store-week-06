@@ -77,6 +77,7 @@ export interface INavbar {
 }
 
 export interface IPaginationButtons {
+	totalPosts?: number;
 	postsPerPage: number;
 	paginate: (paginate: number) => void;
 }
