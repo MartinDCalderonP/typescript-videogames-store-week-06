@@ -28,7 +28,7 @@ export default function Search() {
 
 			{!loading && data.length > 0 && (
 				<>
-					<h1>{`Results for "${searchedTerm}".`}</h1>
+					<h1>{`Results for "${searchedTerm.replaceAll('+', ' ')}".`}</h1>
 
 					<CardsContainer
 						className={styles.results}
@@ -46,7 +46,7 @@ export default function Search() {
 
 			{!loading && data.length === 0 && (
 				<h1 className={styles.noResults}>
-					{`No results found for "${searchedTerm}".`}
+					{`No results found for "${searchedTerm.replaceAll('+', ' ')}".`}
 				</h1>
 			)}
 		</div>
