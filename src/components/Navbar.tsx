@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import styles from '../styles/Navbar.module.scss';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { INavbar } from '../common/types';
+import { paths } from '../common/enums';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
 	faHome,
 	faSignInAlt,
+	faSignOutAlt,
 	faUserCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import Search from './SearchInput';
@@ -13,9 +15,14 @@ import Modal from './Modal';
 
 export default function Navbar({ onLoggedUser, user }: INavbar) {
 	const [openModal, setOpenModal] = useState(false);
+	const history = useHistory();
 
 	const handleSignInClick = () => {
 		setOpenModal(true);
+	};
+
+	const handleToProfile = () => {
+		history.push(`${paths.profile}${user.user.id}`);
 	};
 
 	const handleSignOutClick = () => {
@@ -36,7 +43,7 @@ export default function Navbar({ onLoggedUser, user }: INavbar) {
 		<>
 			<nav className={styles.navbar}>
 				<Link to="/">
-					<FontAwesomeIcon className={styles.home} icon={faHome} />
+					<FontAwesomeIcon className={styles.leftSide} icon={faHome} />
 					Home
 				</Link>
 
@@ -45,12 +52,24 @@ export default function Navbar({ onLoggedUser, user }: INavbar) {
 				{!user ? (
 					<div onClick={handleSignInClick}>
 						Sign In
-						<FontAwesomeIcon className={styles.signIn} icon={faSignInAlt} />
+						<FontAwesomeIcon className={styles.rightSide} icon={faSignInAlt} />
 					</div>
 				) : (
-					<div onClick={handleSignOutClick}>
-						{user?.user?.firstName}
-						<FontAwesomeIcon className={styles.signIn} icon={faUserCircle} />
+					<div>
+						<div onClick={handleToProfile}>
+							{user?.user?.firstName}
+							<FontAwesomeIcon
+								className={styles.rightSide}
+								icon={faUserCircle}
+							/>
+						</div>
+
+						<div onClick={handleSignOutClick}>
+							<FontAwesomeIcon
+								className={styles.rightSide}
+								icon={faSignOutAlt}
+							/>
+						</div>
 					</div>
 				)}
 			</nav>

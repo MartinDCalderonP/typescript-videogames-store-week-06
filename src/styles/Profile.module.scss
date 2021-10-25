@@ -1,0 +1,14 @@
+.profilePage {
+	width: 80vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin: 20px auto 50px;
+
+	div {
+		cursor: pointer;
+		padding: 5px 10px;
+		font-size: 1.5rem;
+	}
+}
