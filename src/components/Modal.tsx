@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FormEvent, MouseEvent } from 'react';
 import { createPortal } from 'react-dom';
 import styles from '../styles/Modal.module.scss';
 import useAuth from '../hooks/useAuth';
@@ -27,15 +27,15 @@ export default function Modal({ closeModal, loggedUser }: IModal) {
 		closeModal(true);
 	};
 
-	const handleIdentifierChange = (e: React.FormEvent<HTMLInputElement>) => {
+	const handleIdentifierChange = (e: FormEvent<HTMLInputElement>) => {
 		setIdentifier(e.currentTarget.value);
 	};
 
-	const handlePasswordChange = (e: React.FormEvent<HTMLInputElement>) => {
+	const handlePasswordChange = (e: FormEvent<HTMLInputElement>) => {
 		setPassword(e.currentTarget.value);
 	};
 
-	const handleSignInButton = async (e: React.MouseEvent<HTMLButtonElement>) => {
+	const handleSignInButton = async (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 
 		setFormData({

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import styles from '../styles/PaginationButtons.module.scss';
 import useFetch from '../hooks/useFetch';
 import { IPaginationButtons } from '../common/types';
@@ -11,7 +11,7 @@ export default function PaginationButtons({
 	const fetchUrl = `https://trainee-gamerbox.herokuapp.com/games/count`;
 	const { data, loading } = useFetch(fetchUrl);
 	const [currentPage, setCurrentPage] = useState(1);
-	const pagesNumbers = React.useMemo(() => {
+	const pagesNumbers = useMemo(() => {
 		return Array.from(
 			{ length: Math.ceil((totalPosts || data) / postsPerPage) },
 			(_, i) => 1 + i

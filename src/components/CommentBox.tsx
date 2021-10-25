@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, ChangeEvent, MouseEvent } from 'react';
 import styles from '../styles/CommentBox.module.scss';
 import { ICommentBox } from '../common/types';
 import Button from './Button';
@@ -16,13 +16,13 @@ export default function CommentBox({
 	const [message, setMessage] = useState('');
 
 	const handleTextAreaValueChange = (
-		e: React.ChangeEvent<HTMLTextAreaElement>
+		e: ChangeEvent<HTMLTextAreaElement>
 	) => {
 		setTextAreaValue(e.currentTarget.value);
 	};
 
 	const handlePostCommentButtonClick = (
-		e: React.MouseEvent<HTMLInputElement>
+		e: MouseEvent<HTMLInputElement>
 	) => {
 		e.preventDefault();
 

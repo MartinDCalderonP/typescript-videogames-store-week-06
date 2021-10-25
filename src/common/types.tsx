@@ -1,9 +1,9 @@
-import { MouseEventHandler } from 'react';
+import { MouseEventHandler, ReactNode } from 'react';
 
 export interface IButton {
 	className?: string;
 	onClick: MouseEventHandler;
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 export interface ICard {
@@ -83,7 +83,7 @@ export interface IPaginationButtons {
 }
 
 export interface IToast {
-	children: React.ReactNode;
+	children: ReactNode;
 	closeToast: (closeToast: boolean) => void;
 }
 

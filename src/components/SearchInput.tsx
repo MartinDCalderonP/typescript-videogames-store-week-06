@@ -1,4 +1,4 @@
-import React, { useState, useReducer, memo } from 'react';
+import React, { useState, useReducer, memo, ChangeEvent, MouseEvent } from 'react';
 import styles from '../styles/SearchInput.module.scss';
 import { useHistory } from 'react-router-dom';
 import { paths } from '../common/enums';
@@ -34,7 +34,7 @@ export default memo(function Search() {
 	const [pressedKey, setPressedKey] = useState(0);
 	const history = useHistory();
 
-	const handleSearchedTermChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleSearchedTermChange = (e: ChangeEvent<HTMLInputElement>) => {
 		dispatch({
 			type: 'SET_SEARCH_TERM',
 			term: e.target.value,
@@ -47,7 +47,7 @@ export default memo(function Search() {
 		history.push(`${paths.search}${term.replaceAll(' ', '+')}`);
 	};
 
-	const handleSearchButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+	const handleSearchButtonClick = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
 
 		if (searchedTerm.term !== '') {

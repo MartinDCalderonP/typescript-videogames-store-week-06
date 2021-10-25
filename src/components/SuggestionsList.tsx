@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, MouseEvent } from 'react';
 import styles from '../styles/SuggestionsList.module.scss';
 import useFetch from '../hooks/useFetch';
 import { ISuggestionsList } from '../common/types';
-import { MouseEvent } from 'react-router/node_modules/@types/react';
 
 export default function SuggestionsList({
 	searchedTerm,
@@ -44,7 +43,7 @@ export default function SuggestionsList({
 		}
 	}, [pressedKey]);
 
-	const handleSuggestionClick = (e: React.MouseEvent<HTMLLIElement>) => {
+	const handleSuggestionClick = (e: MouseEvent<HTMLLIElement>) => {
 		if (typeof e.currentTarget.textContent === 'string') {
 			suggestionSelected(e.currentTarget.textContent);
 			closeSuggestions(true);
