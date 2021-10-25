@@ -39,12 +39,25 @@ export default function Search() {
 		});
 	};
 
-	const handleSearchButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-
+	const searchTerm = () => {
 		if (searchedTerm.term !== '') {
 			history.push(`${paths.search}${searchedTerm.term.replace(' ', '+')}`);
 		}
+	};
+
+	const handleSearchButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+		e.preventDefault();
+
+		searchTerm();
+	};
+
+	const handleSuggestionSelected = (suggestionSelected: string) => {
+		dispatch({
+			type: 'SET_SEARCH_TERM',
+			term: suggestionSelected,
+		});
+
+		searchTerm();
 	};
 
 	return (
@@ -67,7 +80,10 @@ export default function Search() {
 			</div>
 
 			{searchedTerm.term !== '' && (
-				<SuggestionsList searchedTerm={searchedTerm.term} />
+				<SuggestionsList
+					searchedTerm={searchedTerm.term}
+					suggestionSelected={handleSuggestionSelected}
+				/>
 			)}
 		</form>
 	);

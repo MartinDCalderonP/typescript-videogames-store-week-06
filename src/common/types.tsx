@@ -112,4 +112,5 @@ export interface ISearchedTerm {
 
 export interface ISuggestionsList {
 	searchedTerm: string;
+	suggestionSelected: (suggestionSelected: string) => void;
 }
