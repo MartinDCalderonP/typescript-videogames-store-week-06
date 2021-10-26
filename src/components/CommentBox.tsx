@@ -1,5 +1,12 @@
-import React, { useState, useRef, ChangeEvent, MouseEvent } from 'react';
+import React, {
+	useState,
+	useRef,
+	useCallback,
+	ChangeEvent,
+	MouseEvent,
+} from 'react';
 import styles from '../styles/CommentBox.module.scss';
+import _ from 'lodash';
 import { ICommentBox } from '../common/types';
 import Button from './Button';
 import Toast from './Toast';
@@ -15,31 +22,11 @@ export default function CommentBox({
 	const [openToast, setOpenToast] = useState(false);
 	const [message, setMessage] = useState('');
 
-	const handleTextAreaValueChange = (
-		e: ChangeEvent<HTMLTextAreaElement>
-	) => {
+	const handleTextAreaValueChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		setTextAreaValue(e.currentTarget.value);
 	};
 
-	const handlePostCommentButtonClick = (
-		e: MouseEvent<HTMLInputElement>
-	) => {
-		e.preventDefault();
-
-		if (textAreaRef.current !== null) {
-			textAreaRef.current.focus();
-		}
-
-		if (textAreaValue) {
-			let newComment = {
-				body: textAreaValue,
-			};
-
-			postComments(newComment);
-		}
-	};
-
-	const postComments = (newComment: object) => {
+	const postComment = (newComment: object) => {
 		fetch(fetchUrl, {
 			method: 'POST',
 			body: JSON.stringify(newComment),
@@ -56,6 +43,29 @@ export default function CommentBox({
 			.catch((err) => setMessage(err));
 
 		setOpenToast(true);
+	};
+
+	const throttledPostComment = useCallback(
+		_.throttle((newComment) => {
+			postComment(newComment);
+		}, 1000),
+		[postComment]
+	);
+
+	const handlePostCommentButtonClick = (e: MouseEvent<HTMLInputElement>) => {
+		e.preventDefault();
+
+		if (textAreaRef.current !== null) {
+			textAreaRef.current.focus();
+		}
+
+		if (textAreaValue) {
+			let newComment = {
+				body: textAreaValue,
+			};
+
+			throttledPostComment(newComment);
+		}
 	};
 
 	const handleCloseToast = () => {
