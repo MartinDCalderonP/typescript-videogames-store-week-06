@@ -1,6 +1,13 @@
-import React, { useState, useReducer, memo, ChangeEvent, MouseEvent } from 'react';
+import React, {
+	useState,
+	useReducer,
+	memo,
+	ChangeEvent,
+	MouseEvent,
+} from 'react';
 import styles from '../styles/SearchInput.module.scss';
 import { useHistory } from 'react-router-dom';
+import _ from 'lodash';
 import { paths } from '../common/enums';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -69,7 +76,9 @@ export default memo(function Search() {
 	};
 
 	const handleKeyNavigation = (e: any) => {
-		setPressedKey(e);
+		_.debounce(() => {
+			setPressedKey(e);
+		}, 500);
 	};
 
 	return (
