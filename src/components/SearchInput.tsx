@@ -78,7 +78,6 @@ export default memo(function Search() {
 
 	const debouncePressKey = useCallback(
 		_.debounce((e) => {
-			console.log('DEBOUNCE');
 			setPressedKey(e);
 		}, 500),
 		[setPressedKey]
