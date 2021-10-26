@@ -1,6 +1,7 @@
 import React, {
 	useState,
 	useReducer,
+	useCallback,
 	memo,
 	ChangeEvent,
 	MouseEvent,
@@ -75,10 +76,16 @@ export default memo(function Search() {
 		setOpenSuggestions(false);
 	};
 
-	const handleKeyNavigation = (e: any) => {
-		_.debounce(() => {
+	const debouncePressKey = useCallback(
+		_.debounce((e) => {
+			console.log('DEBOUNCE');
 			setPressedKey(e);
-		}, 500);
+		}, 500),
+		[setPressedKey]
+	);
+
+	const handleKeyNavigation = (e: any) => {
+		debouncePressKey(e);
 	};
 
 	return (
