@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import styles from '../styles/Carousel.module.scss';
 import { Link } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
+import _ from 'lodash';
 import { paths } from '../common/enums';
 import Spinner from './Spinner';
 import Chevron from './Chevron';
@@ -27,16 +28,30 @@ export default function Carousel() {
 		};
 	}, [data?.length]);
 
+	const throttledPreviousClick = useCallback(
+		_.throttle(() => {
+			setCurrentSlide((current) =>
+				current === 0 ? data?.length - 1 : current - 1
+			);
+		}, 1000),
+		[setCurrentSlide, data?.length]
+	);
+
 	const handlePreviousClick = () => {
-		setCurrentSlide((current) =>
-			current === 0 ? data?.length - 1 : current - 1
-		);
+		throttledPreviousClick();
 	};
 
+	const throttledNextClick = useCallback(
+		_.throttle(() => {
+			setCurrentSlide((current) =>
+				current === data?.length - 1 ? 0 : current + 1
+			);
+		}, 1000),
+		[setCurrentSlide, data?.length]
+	);
+
 	const handleNextClick = () => {
-		setCurrentSlide((current) =>
-			current === data?.length - 1 ? 0 : current + 1
-		);
+		throttledNextClick();
 	};
 
 	const handleDotClick = (carouselStep: number) => {
