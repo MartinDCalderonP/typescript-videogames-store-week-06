@@ -12,6 +12,7 @@ overrides:
   cross-spawn@>=7.0.0 <7.0.5: '>=7.0.5'
   ejs@<3.1.10: '>=3.1.10'
   ejs@<3.1.7: '>=3.1.7'
+  flatted@<3.4.0: '>=3.4.0'
   http-proxy-middleware@<2.0.7: '>=2.0.7'
   immer@>=7.0.0 <9.0.6: '>=9.0.6'
   loader-utils@>=2.0.0 <2.0.3: '>=2.0.3'
@@ -3439,8 +3440,8 @@ packages:
     resolution: {integrity: sha512-LoQe6yDuUMDzQAEH8sgmh4Md6oZnc/7PjtwjNFSzveXqSHt6ka9fPBuso7IGf9Rz4uqnSnWiFH2B/zj24a5ReA==}
     engines: {node: '>=4'}
 
-  flatted@2.0.2:
-    resolution: {integrity: sha512-r5wGx7YeOwNWNlCA0wQ86zKyDLMQr+/RB8xy74M4hTphfmjlijTSSXGuH8rnvKZnfT9i+75zmd8jcKdMR4O6jA==}
+  flatted@3.4.2:
+    resolution: {integrity: sha512-PjDse7RzhcPkIJwy5t7KPWQSZ9cAbzQXcafsetQoD7sOJRQlGikNbx7yZp2OotDnJyrDcbyRq3Ttb18iYOqkxA==}
 
   flatten@1.0.3:
     resolution: {integrity: sha512-dVsPA/UwQ8+2uoFe5GHtiBMu48dWLTdsuEd7CKGlZlD78r1TTWBvDuFaFGKCo/ZfEr95Uk56vZoX86OsHkUeIg==}
@@ -8488,11 +8489,7 @@ snapshots:
       jest-runner: 26.6.3
       jest-runtime: 26.6.3
     transitivePeerDependencies:
-      - bufferutil
-      - canvas
       - supports-color
-      - ts-node
-      - utf-8-validate
 
   '@jest/transform@26.6.2':
     dependencies:
@@ -11502,11 +11499,11 @@ snapshots:
 
   flat-cache@2.0.1:
     dependencies:
-      flatted: 2.0.2
+      flatted: 3.4.2
       rimraf: 2.6.3
       write: 1.0.3
 
-  flatted@2.0.2: {}
+  flatted@3.4.2: {}
 
   flatten@1.0.3: {}
 
